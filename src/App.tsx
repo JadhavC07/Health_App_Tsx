@@ -1,40 +1,44 @@
-import { useContext, useState } from 'react';
-import './App.css';
-import ShowHealthData from './component/ShowHealthData/ShowHealthData';
-import HealthDataContext, { HealthDataContextWrapper } from './context/health-data-context';
-import EditHealthData from './component/EditHealthData/EditHealthData';
-import { EDIT } from './store/store-types';
-import { VIEW } from './store/store-types';
-import MainComponent from './component/MainComponent/MainComponent';
-
-
-import { createBrowserRouter,RouterProvider } from 'react-router-dom';
-import HomePage from './component/HomePage/HomePage';
-import Header from './Header/Header';
+import { HealthDataContextWrapper } from "./context/health-data-context";
+import MainComponent from "./component/MainComponent/MainComponent";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./component/HomePage/HomePage";
+import Header from "./Header/Header";
+import "./App.css";
+import RootComp from "./RootComp/RootComp";
+import EditHealthData from "./component/EditHealthData/EditHealthData";
+import ViewHealthData from "./component/ViewHealthData/ViewHealthData";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />
+    path: "/",
+    element: <RootComp />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/main",
+        element: <MainComponent />,
+      },
+      {
+        path: "/edit",
+        element: <EditHealthData />,
+      },
+      {
+        path: "/view",
+        element: <ViewHealthData />,
+      },
+    ],
   },
-  {
-    path: '/main',
-    element: <MainComponent />
-  }
 ]);
 
-
-
 function App() {
-
-
   return (
     <HealthDataContextWrapper>
-      <Header />
-       <RouterProvider router={router} />
+      <RouterProvider router={router} />
       {/* <MainComponent /> */}
     </HealthDataContextWrapper>
-
   );
 }
 
