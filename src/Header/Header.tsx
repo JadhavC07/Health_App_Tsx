@@ -5,9 +5,9 @@ const Header = () => {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand fw-bold text-primary" href="/">
+          <Link className="navbar-brand fw-bold text-primary" to="/">
             <span className="fs-4 fw-bold text-success">U</span>-Health
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -39,7 +39,7 @@ const Header = () => {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-primary" type="submit">
                 Search
               </button>
             </form>

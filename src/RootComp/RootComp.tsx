@@ -8,7 +8,6 @@ const RootComp = () => {
     <>
       <div className={styless["outlet"]}>
         <Header />
-        <h1>USer-Outlet</h1>
         <Outlet />
       </div>
     </>

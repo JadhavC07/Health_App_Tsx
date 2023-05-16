@@ -1,11 +1,9 @@
 import { useContext } from "react";
-import { TABLE, stateType } from "../../store/store-types";
 import HealthDataContext from "../../context/health-data-context";
 import { Link } from "react-router-dom";
 
 const EditHealthData = () => {
-  const { userData, changeUserData, changeView } =
-    useContext(HealthDataContext);
+  const { userData, changeUserData } = useContext(HealthDataContext);
 
   //    const currentChange
 
@@ -26,26 +24,70 @@ const EditHealthData = () => {
     const newUserData = { ...userData, BP: newBP };
     changeUserData(newUserData, true);
   };
+  const onChangeSBP = (e: any) => {
+    const newSBP = { ...userData.SBP, value: e.target.value };
+    const newUserData = { ...userData, SBP: newSBP };
+    changeUserData(newUserData, true);
+  };
+  const onChangeDBP = (e: any) => {
+    const newDBP = { ...userData.SBP, value: e.target.value };
+    const newUserData = { ...userData, SBP: newDBP };
+    changeUserData(newUserData, true);
+  };
   return (
     <div>
-      <Link to="/main" className="btn btn-primary btn-sm">Back</Link>
-      <form>
-        <p>ID :- {userData.id}</p>
-        <input
-          type="text"
-          value={userData.name}
-          onChange={onNameChange}
-          placeholder="name"
-        />
+      <Link to="/main" className="btn btn-primary btn-sm">
+        Back
+      </Link>
+      <p>ID :- {userData.id}</p>
+      <form className="d-flex">
+        <div className="">
+          <input
+            type="text"
+            value={userData.name}
+            onChange={onNameChange}
+            placeholder="name"
+          />
+          <input
+            type="number"
+            value={userData.BP.value}
+            onChange={onChangeBP}
+            placeholder={userData.BP.name}
+          />
 
-        <span>----------------------------</span>
+          <input
+            type="number"
+            value={userData.BP.value}
+            onChange={onChangeSBP}
+            placeholder={userData.SBP.name}
+          />
 
-        <input
-          type="number"
-          value={userData.BP.value}
-          onChange={onChangeBP}
-          placeholder={userData.BP.name}
-        />
+          <input
+            type="number"
+            value={userData.BP.value}
+            onChange={onChangeDBP}
+            placeholder={userData.DBP.name}
+          />
+          <input
+            type="number"
+            value={userData.BP.value}
+            onChange={onChangeBP}
+            placeholder={userData.BP.name}
+          />
+          <input
+            type="text"
+            value={userData.name}
+            onChange={onNameChange}
+            placeholder="name"
+          />
+
+          <input
+            type="number"
+            value={userData.BP.value}
+            onChange={onChangeBP}
+            placeholder={userData.BP.name}
+          />
+        </div>
       </form>
     </div>
   );
