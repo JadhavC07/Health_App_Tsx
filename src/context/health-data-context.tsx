@@ -8,41 +8,22 @@ import { TABLE, VIEW_MODE, stateType } from "../store/store-types";
 
 const HealthDataContext = createContext({
   users: initalState,
-  currentPageState: TABLE,
-  userData: initalState[0],
-  changeView: (value: VIEW_MODE) => {},
-  changeUserData: (userData: stateType, changeState: boolean) => {},
+  dispatchFun: (action: any) => {},
 });
 
 export const HealthDataContextWrapper: React.FC<any> = (props) => {
   const [userState, dispatch] = useReducer(reducerFunction, initalStateValue);
-  const [currentPageState, setCurrentPageState] = useState<VIEW_MODE>(TABLE);
 
-  const [userData, setUserData] = useState<stateType>(initalState[0]);
-
-  const changeUserData = (userData: stateType, changeState = false) => {
-    setUserData(userData);
-    if (changeState) {
-      const action = {
-        type: "UPDATE_USER_DATA",
-        userData,
-      };
-      dispatch(action);
-    }
+  const dispatchFun = (action: any) => {
+    dispatch(action);
   };
 
-  const changeView = (value: VIEW_MODE) => {
-    setCurrentPageState(value);
-  };
   const { children } = props;
   return (
     <HealthDataContext.Provider
       value={{
         users: userState,
-        currentPageState: currentPageState,
-        changeView: changeView,
-        userData: userData,
-        changeUserData: changeUserData,
+        dispatchFun: dispatchFun,
       }}
     >
       <div className={styless["container-main"]}>{children}</div>

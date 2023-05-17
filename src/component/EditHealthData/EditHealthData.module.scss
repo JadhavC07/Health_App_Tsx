@@ -1,0 +1,19 @@
+.form-control {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 500px;
+  margin: 50px auto;
+}
+
+.form-input {
+  margin: 10px 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.font{
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(77, 129, 241);
+}

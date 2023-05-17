@@ -8,4 +8,3 @@ test("renders learn react link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-console.log("type of test", typeof test);

@@ -7,16 +7,16 @@ import { useNavigate } from "react-router-dom";
 const TableComp = () => {
   const BtnNavigate = useNavigate();
 
-  const { users, changeUserData } = useContext(HealthDataContext);
+  const { users } = useContext(HealthDataContext);
 
   const onEdit = (userDATA: stateType) => {
-    BtnNavigate("/edit");
-    changeUserData(userDATA, false);
+    BtnNavigate(`/edit/${userDATA.id}`);
   };
 
   const onView = (userDATA: stateType) => {
-    BtnNavigate("/view");
-    changeUserData(userDATA, false);
+    console.table(userDATA);
+
+    BtnNavigate(`/view/${userDATA.id}`);
   };
 
   const tBodyRow = users.map((user) => {

@@ -6,6 +6,7 @@ import RootComp from "./RootComp/RootComp";
 import EditHealthData from "./component/EditHealthData/EditHealthData";
 import ViewHealthData from "./component/ViewHealthData/ViewHealthData";
 import "./App.css";
+import ShowHealthData from "./component/ShowHealthData/ShowHealthData";
 
 const router = createBrowserRouter([
   {
@@ -17,15 +18,15 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/main",
-        element: <MainComponent />,
+        path: "/show",
+        element: <ShowHealthData />,
       },
       {
-        path: "/edit",
+        path: "/edit/:userId",
         element: <EditHealthData />,
       },
       {
-        path: "/view",
+        path: "/view/:userId",
         element: <ViewHealthData />,
       },
     ],
