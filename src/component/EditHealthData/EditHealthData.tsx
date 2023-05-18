@@ -6,11 +6,24 @@ import { initalState } from "../../store/reducer-store";
 import { stateType } from "../../store/store-types";
 
 const EditHealthData = () => {
-  const parms = useParams();
+  const parms: any = useParams();
+  console.table(parms);
+
   console.table(parms);
   const { users, dispatchFun } = useContext(HealthDataContext);
 
-  const [userData, setUserData] = useState<stateType>(initalState[0]);
+  const [userData, setUserData] = useState<any>(initalState[0]);
+
+  useEffect(() => {
+    if (parms.userId) {
+      users.forEach((user) => {
+        if (user.id === parseInt(parms.userId)) {
+          setUserData(user);
+        }
+      });
+    }
+    console.log("userData", userData);
+  }, [parms]);
 
   const onNameChange = (e: any) => {
     console.log("e.name", e.target.value);
@@ -23,32 +36,19 @@ const EditHealthData = () => {
     dispatchFun(action);
   };
 
-  const onChangeHR = (e: any) => {
-    const newHR = { ...userData.HR, value: e.target.value };
-    const newUserData = { ...userData, HR: newHR };
-    setUserData(newUserData);
-  };
+  const onChangeHealthData = (value: any, healthName: any) => {
+    console.log("healthName", healthName);
 
-  const onChangeSBP = (e: any) => {
-    const newSBP = { ...userData.SBP, value: e.target.value };
-    const newUserData = { ...userData, SBP: newSBP };
-    setUserData(newUserData);
-  };
-  const onChangeDBP = (e: any) => {
-    const newDBP = { ...userData.DBP, value: e.target.value };
-    const newUserData = { ...userData, BP: newDBP };
-    setUserData(newUserData);
-  };
+    const healthData = {
+      ...userData[healthName],
+      value: value,
+    };
 
-  const onChangeBP = (e: any) => {
-    const newBP = { ...userData.BP, value: e.target.value };
-    const newUserData = { ...userData, BP: newBP };
-    setUserData(newUserData);
-  };
+    const newUserData = {
+      ...userData,
+      [healthName]: healthData,
+    };
 
-  const onChangePR = (e: any) => {
-    const newPR = { ...userData.HR, value: e.target.value };
-    const newUserData = { ...userData, HR: newPR };
     setUserData(newUserData);
   };
 
@@ -83,7 +83,7 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.BP.value}
-            onChange={onChangeBP}
+            onChange={(e) => onChangeHealthData(e.target.value, "BP")}
             id="bp"
             placeholder={userData.BP.name}
           />
@@ -96,7 +96,7 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.HR.value}
-            onChange={onChangeHR}
+            onChange={(e) => onChangeHealthData(e.target.value, "HR")}
             id="HR"
             placeholder={userData.HR.name}
           />
@@ -109,7 +109,7 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.SBP.value}
-            onChange={onChangeSBP}
+            onChange={(e) => onChangeHealthData(e.target.value, "SBP")}
             id="SBP"
             placeholder={userData.SBP.name}
           />
@@ -122,7 +122,7 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.DBP.value}
-            onChange={onChangeDBP}
+            onChange={(e) => onChangeHealthData(e.target.value, "DBP")}
             id="DBP"
             placeholder={userData.DBP.name}
           />
@@ -135,7 +135,7 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.PR.value}
-            onChange={onChangePR}
+            onChange={(e) => onChangeHealthData(e.target.value, "PR")}
             id="PR"
             placeholder={userData.PR.name}
           />
@@ -148,12 +148,14 @@ const EditHealthData = () => {
           <input
             type="number"
             value={userData.SR.value}
-            onChange={onChangeBP}
+            onChange={(e) => onChangeHealthData(e.target.value, "SR")}
             id="SR"
             placeholder={userData.SR.name}
           />
         </div>
-        <input type="button" value="Submit" onClick={submitdAta} />
+        <button type="button" onClick={submitdAta}>
+          Submit
+        </button>
       </form>
     </div>
   );
