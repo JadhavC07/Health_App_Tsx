@@ -1,10 +1,10 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 import styless from "./HealthData.module.scss";
 import reducerFunction, {
   initalState,
   initalStateValue,
 } from "../store/reducer-store";
-import { TABLE, VIEW_MODE, stateType } from "../store/store-types";
+
 
 const HealthDataContext = createContext({
   users: initalState,

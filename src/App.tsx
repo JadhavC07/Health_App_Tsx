@@ -5,8 +5,8 @@ import HomePage from "./component/HomePage/HomePage";
 import RootComp from "./RootComp/RootComp";
 import EditHealthData from "./component/EditHealthData/EditHealthData";
 import ViewHealthData from "./component/ViewHealthData/ViewHealthData";
-import "./App.css";
 import ShowHealthData from "./component/ShowHealthData/ShowHealthData";
+import "./App.css";
 
 const router = createBrowserRouter([
   {

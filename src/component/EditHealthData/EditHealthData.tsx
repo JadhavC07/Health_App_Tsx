@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import HealthDataContext from "../../context/health-data-context";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styless from "./EditHealthData.module.scss";
 import { initalState } from "../../store/reducer-store";
-import { stateType } from "../../store/store-types";
 
 const EditHealthData = () => {
   const parms: any = useParams();
@@ -23,6 +22,7 @@ const EditHealthData = () => {
       });
     }
     console.log("userData", userData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parms]);
 
   const onNameChange = (e: any) => {
