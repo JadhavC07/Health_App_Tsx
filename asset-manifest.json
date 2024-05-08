@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Health_App_Tsx/static/css/main.ebb2da45.css",
+    "main.js": "/Health_App_Tsx/static/js/main.a603174c.js",
+    "static/js/787.de2b76bc.chunk.js": "/Health_App_Tsx/static/js/787.de2b76bc.chunk.js",
+    "index.html": "/Health_App_Tsx/index.html",
+    "main.ebb2da45.css.map": "/Health_App_Tsx/static/css/main.ebb2da45.css.map",
+    "main.a603174c.js.map": "/Health_App_Tsx/static/js/main.a603174c.js.map",
+    "787.de2b76bc.chunk.js.map": "/Health_App_Tsx/static/js/787.de2b76bc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebb2da45.css",
+    "static/js/main.a603174c.js"
+  ]
+}
